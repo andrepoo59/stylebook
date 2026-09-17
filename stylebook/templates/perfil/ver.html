@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block titulo %}Mi perfil · StyleBook{% endblock %}
+{% block contenido %}
+  <section class="formulario-angosto">
+    <h1>Mi perfil</h1>
+    <p><strong>Nombre:</strong> {{ perfil.nombre }}</p>
+    <p><strong>Teléfono:</strong> {{ perfil.telefono or "No registrado" }}</p>
+    <p><strong>Rol:</strong> {{ perfil.rol }}</p>
+    <div class="acciones">
+      <a class="boton" href="{{ url_for('perfil.editar') }}">Editar perfil</a>
+      {% if perfil.rol != 'cliente' %}
+        <a class="boton boton-secundario" href="{{ url_for('servicios.gestionar') }}">
+          Gestionar mis servicios
+        </a>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
