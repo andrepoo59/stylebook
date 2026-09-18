@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block titulo %}{{ profesional.perfiles.nombre or "Profesional" }} · StyleBook{% endblock %}
+{% block contenido %}
+  <section>
+    <div class="encabezado-profesional">
+      <div class="avatar-iniciales avatar-grande">{{ (profesional.perfiles.nombre or "?")[0]|upper }}</div>
+      <div>
+        <h1>{{ profesional.perfiles.nombre or "Profesional" }}</h1>
+        <span class="etiqueta">{{ profesional.especialidad }}</span>
+      </div>
+    </div>
+    <p>{{ profesional.descripcion or "Sin descripción" }}</p>
+    <p class="detalle-menor">
+      {{ profesional.anios_experiencia }} años de experiencia
+      {% if profesional.telefono %} &middot; {{ profesional.telefono }}{% endif %}
+    </p>
+
+    <h2>Servicios</h2>
+    {% if servicios %}
+      <ul class="lista-servicios">
+        {% for s in servicios %}
+          <li>
+            <strong>{{ s.nombre }}</strong> — ${{ "%.2f"|format(s.precio) }}
+            ({{ s.duracion_min }} min)
+            {% if s.descripcion %}<p>{{ s.descripcion }}</p>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Este profesional todavía no ha cargado servicios.</p>
+    {% endif %}
+  </section>
+{% endblock %}
