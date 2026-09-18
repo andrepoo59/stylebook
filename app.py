@@ -29,4 +29,9 @@ def index():
 if __name__ == "__main__":
     import os 
     port = int(os.environ.get("PORT", 5000))
+<<<<<<< HEAD
     app.run(host= "0.0.0.0", port=port) 
+=======
+    app.run(host= "0.0.0.0", port=port) 
+    
+>>>>>>> 569a8a05cf0d927f8d0dcf1ef5a65f7adff87317
